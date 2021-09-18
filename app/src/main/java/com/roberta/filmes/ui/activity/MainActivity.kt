@@ -1,7 +1,8 @@
-package com.roberta.filmes
+package com.roberta.filmes.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.roberta.filmes.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
