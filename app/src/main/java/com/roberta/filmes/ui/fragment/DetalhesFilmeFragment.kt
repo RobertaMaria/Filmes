@@ -14,16 +14,16 @@ import com.bumptech.glide.Glide
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.roberta.filmes.R
 import com.roberta.filmes.Util.DataUtil
-import com.roberta.filmes.dao.DetalhesFilmeDao
 import com.roberta.filmes.model.Genero
+import com.roberta.filmes.model.RetornoDetalhesFilme
 import com.roberta.filmes.ui.viewmodel.DetalhesFilmesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class DetalhesFilmeFragment(private val detalhesFilmeDao: DetalhesFilmeDao) : Fragment() {
+class DetalhesFilmeFragment() : Fragment() {
 
     private lateinit var campoGenero: TextView
-    private lateinit var mostraDescricao: TextView
+    private lateinit var campoDescricao: TextView
     private lateinit var campoIdioma: TextView
     private lateinit var campoDataLancamento: TextView
     private lateinit var campoImagem: ImageView
@@ -50,26 +50,34 @@ class DetalhesFilmeFragment(private val detalhesFilmeDao: DetalhesFilmeDao) : Fr
     }
 
     private fun buscaFilme() {
-        viewModel.buscaDetalhesFilme().observe(viewLifecycleOwner) {
-            it?.let {
-                progressBar.visibility = GONE
-                it.detalhes?.let { detalhesFilme ->
-
-                    mostraTitulo(campoTitulo, detalhesFilme.title)
-                    mostraImagem(campoImagem, detalhesFilme.poster_path)
-                    mostraDataLancamento(campoDataLancamento, detalhesFilme.release_date)
-                    mostraIdioma(campoIdioma, detalhesFilme.original_language)
-                    mostraDescricao(mostraDescricao, detalhesFilme.overview)
-                    mostraGenero(campoGenero, detalhesFilme.genres)
+        viewModel.buscaDetalhesFilmeInterno().observe(viewLifecycleOwner) {
+            if (it != null){
+                mostraDetalhes(it)
+            }else{
+                viewModel.buscaDetalhesFilmeApi().observe(viewLifecycleOwner) {
+                    it?.let {
+                        it.detalhes?.let { detalhesFilme ->
+                            viewModel.salvaDetalhesFilmeInterno(detalhesFilme)
+                            mostraDetalhes(detalhesFilme)
+                        }
+                    }
                 }
             }
         }
+
     }
 
-    private fun mostraGenero(
-        campoGenero: TextView,
-        generosLista: List<Genero>
-    ) {
+    private fun mostraDetalhes(detalhesFilme: RetornoDetalhesFilme) {
+        progressBar.visibility = GONE
+        mostraTitulo(detalhesFilme.title)
+        mostraImagem(detalhesFilme.poster_path)
+        mostraDataLancamento(detalhesFilme.release_date)
+        mostraIdioma(detalhesFilme.original_language)
+        mostraDescricao(detalhesFilme.overview)
+        mostraGenero( detalhesFilme.genres)
+    }
+
+    private fun mostraGenero(generosLista: List<Genero>) {
         campoGenero.apply {
             var generos = ""
             generosLista.forEach { genero ->
@@ -80,45 +88,31 @@ class DetalhesFilmeFragment(private val detalhesFilmeDao: DetalhesFilmeDao) : Fr
         }
     }
 
-    private fun mostraDescricao(
-        mostraDescricao: TextView,
-        descricao: String
-    ) {
-        mostraDescricao.text = descricao
+    private fun mostraDescricao(descricao: String) {
+        campoDescricao.text = descricao
     }
 
-    private fun mostraIdioma(
-        campoIdioma: TextView,
-        idioma: String
-    ) {
+    private fun mostraIdioma(idioma: String) {
         campoIdioma.text = idioma
     }
 
-    private fun mostraDataLancamento(
-        campoDataLancamento: TextView,
-        dataLancamento: String
-    ) {
+    private fun mostraDataLancamento(dataLancamento: String) {
         campoDataLancamento.text = DataUtil.formataData(dataLancamento)
     }
 
-    private fun mostraImagem(
-        campoImagem: ImageView,
-        imagem: String
-    ) {
+    private fun mostraImagem(imagem: String) {
         Glide.with(campoImagem)
             .load(
                 campoImagem.context.resources.getString(
                     R.string.url_imagem,
                     imagem
                 )
-            )
+            ).placeholder(R.mipmap.erro)
+            .error(R.mipmap.falha)
             .into(campoImagem)
     }
 
-    private fun mostraTitulo(
-        campoTitulo: CollapsingToolbarLayout,
-        titulo: String
-    ) {
+    private fun mostraTitulo(titulo: String) {
         campoTitulo.title = titulo
     }
 
@@ -127,7 +121,7 @@ class DetalhesFilmeFragment(private val detalhesFilmeDao: DetalhesFilmeDao) : Fr
         campoImagem = view.findViewById(R.id.detalhes_filme_imagem)
         campoDataLancamento = view.findViewById(R.id.detalhes_filme_lancamento_valor)
         campoIdioma = view.findViewById(R.id.detalhes_filme_idioma_valor)
-        mostraDescricao = view.findViewById(R.id.detalhes_filme_descricao_valor)
+        campoDescricao = view.findViewById(R.id.detalhes_filme_descricao_valor)
         campoGenero = view.findViewById(R.id.detalhes_filme_genero_valor)
         progressBar = view.findViewById(R.id.detalhes_filme_progressBar)
     }

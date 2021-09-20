@@ -3,6 +3,7 @@ package com.roberta.filmes.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.roberta.filmes.dao.DetalhesFilmeDao
 import com.roberta.filmes.model.Filmes
 import com.roberta.filmes.model.RetornoDetalhesFilme
 import com.roberta.filmes.retrofit.FilmesPagingSource
@@ -14,12 +15,12 @@ import retrofit2.Response
 
 class FilmesRepositoryImp(
     private val service: FilmesService,
-    private val detalhesDao: RetornoDetalhesFilme,
     private val chaveApi: String,
-    private val pagingSource: FilmesPagingSource
+    private val pagingSource: FilmesPagingSource,
+    private val detalhesFilmeDao: DetalhesFilmeDao
 ) : FilmesRepository {
 
-    override fun getFilmesApi(): Flow<PagingData<Filmes>> {
+    override fun buscaFilmesApi(): Flow<PagingData<Filmes>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 20,
@@ -35,9 +36,12 @@ class FilmesRepositoryImp(
         quandoFalha: (String) -> Unit,
         id: Int
     ) {
-        val call = service.buscaPorId(id, chaveApi)
+        val call = service.buscaDetalhesFilmesApi(id, chaveApi)
         call.enqueue(object : Callback<RetornoDetalhesFilme> {
-            override fun onResponse(call: Call<RetornoDetalhesFilme>, response: Response<RetornoDetalhesFilme>) {
+            override fun onResponse(
+                call: Call<RetornoDetalhesFilme>,
+                response: Response<RetornoDetalhesFilme>
+            ) {
                 if (response.isSuccessful) {
                     val resultado = response.body()
                     if (resultado != null) {
@@ -53,5 +57,13 @@ class FilmesRepositoryImp(
             }
 
         })
+    }
+
+    override fun buscaDetalhesInterno(filmeId: Int): RetornoDetalhesFilme? {
+        return detalhesFilmeDao.buscaDetalhesInterno(filmeId)
+    }
+
+    override fun salvaDetalhesInterno(detalhesFilme: RetornoDetalhesFilme) {
+        detalhesFilmeDao.salvaDetalhesInterno(detalhesFilme)
     }
 }

@@ -66,7 +66,7 @@ class ListaFilmesFragment : Fragment() {
 
     private fun buscaFilmes() {
         lifecycleScope.launchWhenCreated {
-            viewModel.getFilmes().collectLatest {
+            viewModel.buscaFilmes().collectLatest {
                 adapter.submitData(it)
             }
         }
@@ -83,8 +83,8 @@ class ListaFilmesFragment : Fragment() {
 
     private fun configuraRecyclerView(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.lista_filmes_recyclerview)
-        adapter.onItemClickListener = {
-            vaiParaDetalhesFilme(it.id)
+        adapter.onItemClickListener = {idFilme ->
+            vaiParaDetalhesFilme(idFilme)
         }
         recyclerView.adapter = adapter
     }
@@ -93,5 +93,4 @@ class ListaFilmesFragment : Fragment() {
         val direcao = ListaFilmesFragmentDirections.acaoListaFilmesParaDetalhesFilmes(id)
         controlador.navigate(direcao)
     }
-
 }

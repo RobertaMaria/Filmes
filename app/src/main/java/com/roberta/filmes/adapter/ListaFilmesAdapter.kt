@@ -13,10 +13,10 @@ import com.roberta.filmes.R
 import com.roberta.filmes.Util.DataUtil
 import com.roberta.filmes.model.Filmes
 
-class ListaFilmesAdapter :
+class ListaFilmesAdapter() :
     PagingDataAdapter<Filmes, ListaFilmesAdapter.ListaFilmesViewHolder>(FILM_COMPARATOR) {
 
-    var onItemClickListener: (filme: Filmes) -> Unit = {}
+    var onItemClickListener: (id: Int) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaFilmesViewHolder {
         val viewCriada =
@@ -30,21 +30,20 @@ class ListaFilmesAdapter :
 
     inner class ListaFilmesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private lateinit var filme: Filmes
+        private var idFilme = 0
         private val campoImagem by lazy { itemView.findViewById<ImageView>(R.id.item_filme_imagem) }
         private val campoDataLancamento by lazy { itemView.findViewById<TextView>(R.id.item_filme_data) }
         private val campoTituo by lazy { itemView.findViewById<TextView>(R.id.item_filme_nome) }
 
+
         init {
             itemView.setOnClickListener {
-                if (::filme.isInitialized) {
-                    onItemClickListener(filme)
-                }
+                onItemClickListener(idFilme)
             }
         }
 
         fun vincula(filme: Filmes) {
-            this.filme = filme
+            this.idFilme = filme.id
             mostraTitulo(filme.title)
             mostraDataLancamento(filme.release_date)
             mostraImagem(filme.backdrop_path)
@@ -53,6 +52,8 @@ class ListaFilmesAdapter :
         private fun mostraImagem(imagem: String) {
             Glide.with(campoImagem)
                 .load(campoImagem.context.resources.getString(R.string.url_imagem, imagem))
+                .placeholder(R.mipmap.erro)
+                .error(R.mipmap.falha)
                 .into(campoImagem)
         }
 
@@ -63,7 +64,6 @@ class ListaFilmesAdapter :
         private fun mostraTitulo(titulo: String) {
             campoTituo.text = titulo
         }
-
     }
 }
 

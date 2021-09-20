@@ -6,7 +6,8 @@ import com.roberta.filmes.model.Filmes
 import com.roberta.filmes.retrofit.service.FilmesService
 import java.lang.Exception
 
-class FilmesPagingSource(private val service: FilmesService, private val chaveApi: String): PagingSource<Int, Filmes>() {
+class FilmesPagingSource(private val service: FilmesService,
+                         private val chaveApi: String): PagingSource<Int, Filmes>() {
 
     override fun getRefreshKey(state: PagingState<Int, Filmes>): Int? {
         return state.anchorPosition

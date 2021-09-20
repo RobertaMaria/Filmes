@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.Flow
 
 class ListaFilmesViewModel(private val repository: FilmesRepository): ViewModel() {
 
-    fun getFilmes(): Flow<PagingData<Filmes>>{
-        return repository.getFilmesApi().cachedIn(viewModelScope)
+    fun buscaFilmes(): Flow<PagingData<Filmes>>{
+        return repository.buscaFilmesApi().cachedIn(viewModelScope)
     }
 
 }
