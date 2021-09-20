@@ -3,35 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/fundo">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/erro_aquisicao_lista_imagem"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:layout_margin="8dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:src="@drawable/erro"/>
 
     <TextView
         android:id="@+id/erro_aquisicao_lista_mensagem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Não foi possível carregar os dados!"
+        android:text="@string/mensagem_erro"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/erro_aquisicao_lista_botao"
-        app:layout_constraintEnd_toEndOf="@+id/erro_aquisicao_lista_imagem"
-        app:layout_constraintStart_toStartOf="@+id/erro_aquisicao_lista_imagem"
-        app:layout_constraintTop_toBottomOf="@+id/erro_aquisicao_lista_imagem" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/erro_aquisicao_lista_botao" />
 
     <Button
         android:id="@+id/erro_aquisicao_lista_botao"
