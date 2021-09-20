@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/detalhes_filme_descricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Descrição"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detalhes_filme_descricao_valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/preto_claro"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/detalhes_filme_descricao"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes_filme_descricao"
+        tools:text="Female adventurer Parker joins a crew of male trophy hunters in a remote wilderness park. Their goal: slaughter genetically recreated dinosaurs for sport using rifles, arrows, and grenades. After their guide is killed by raptors, the team tries to escape the park – but the hunters quickly become the hunted. Even worse, the park’s manager suspects Parker of being a spy and sends a hit squad after her. This battle’s about to become primitive!" />
+
+    <TextView
+        android:id="@+id/detalhes_filme_genero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Genêro"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/detalhes_filme_descricao"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes_filme_descricao_valor" />
+
+    <TextView
+        android:id="@+id/detalhes_filme_genero_valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/preto_claro"
+        app:layout_constraintStart_toStartOf="@+id/detalhes_filme_genero"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes_filme_genero"
+        tools:text="Action, Science Fiction, Thriller" />
+
+    <TextView
+        android:id="@+id/detalhes_filme_lancamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/detalhes_filme_genero"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes_filme_genero_valor"
+        android:text="Data de lançamento" />
+
+    <TextView
+        android:id="@+id/detalhes_filme_lancamento_valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/preto_claro"
+        app:layout_constraintStart_toStartOf="@+id/detalhes_filme_genero_valor"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes_filme_lancamento"
+        tools:text="01/09/2021" />
+
+    <TextView
+        android:id="@+id/detalhes_filme_idioma_origem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Idioma de origem"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/detalhes_filme_lancamento"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes_filme_lancamento_valor" />
+
+    <TextView
+        android:id="@+id/detalhes_filme_idioma_valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/preto_claro"
+        app:layout_constraintStart_toStartOf="@+id/detalhes_filme_lancamento_valor"
+        app:layout_constraintTop_toBottomOf="@+id/detalhes_filme_idioma_origem"
+        tools:text="en" />
+
+    <ProgressBar
+        android:id="@+id/detalhes_filme_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+</androidx.constraintlayout.widget.ConstraintLayout>

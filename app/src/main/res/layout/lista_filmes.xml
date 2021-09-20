@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Toolbar
-        android:id="@+id/lista_pokemon_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:title="Filmes"
-        android:titleTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+<!--    <Toolbar-->
+<!--        android:id="@+id/lista_filme_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:minHeight="?attr/actionBarSize"-->
+<!--        android:theme="?attr/actionBarTheme"-->
+<!--        android:title="@string/app_name"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista_filmes_recyclerview"
@@ -25,32 +26,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lista_pokemon_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_filmes" />
 
     <ProgressBar
-        android:id="@+id/lista_pokemon_progessbar"
+        android:id="@+id/lista_filmes_progessbar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_margin="8dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/purple_500"
         android:indeterminateTintMode="src_atop"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"
         android:progress="50"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/lista_filmes_recyclerview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lista_pokemon_toolbar" />
+        app:layout_constraintTop_toBottomOf="parent"/>
 
-<!--    <include-->
-<!--        android:id="@+id/tela_erro"-->
-<!--        layout="@layout/tela_erro_pokemon"-->
-<!--        android:visibility="gone"/>-->
+        <include
+            android:id="@+id/tela_erro"
+            layout="@layout/erro_aquisicao_lista"
+            android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

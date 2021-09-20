@@ -9,5 +9,23 @@
         android:id="@+id/listaFilmes"
         android:name="com.roberta.filmes.ui.fragment.ListaFilmesFragment"
         android:label="Lista de Filmes"
-        tools:layout="@layout/lista_filmes"/>
+        tools:layout="@layout/lista_filmes">
+        <action
+            android:id="@+id/acao_listaFilmes_para_detalhesFilmes"
+            app:destination="@id/detalhesFilme"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalhesFilme"
+        android:name="com.roberta.filmes.ui.fragment.DetalhesFilmeFragment"
+        android:label="Detalhes do Filme"
+        tools:layout="@layout/detalhes_filme">
+        <argument
+            android:name="filmeId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
