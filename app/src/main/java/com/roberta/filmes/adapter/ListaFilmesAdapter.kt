@@ -57,7 +57,7 @@ class ListaFilmesAdapter() :
                 .into(campoImagem)
         }
 
-        private fun mostraDataLancamento(lancamento: String) {
+        private fun mostraDataLancamento(lancamento: String?) {
             campoDataLancamento.text = DataUtil.formataData(lancamento)
         }
 

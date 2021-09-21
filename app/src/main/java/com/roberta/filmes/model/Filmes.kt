@@ -6,6 +6,6 @@ data class Filmes(
     val id: Int,
     val original_language: String,
     val overview: String,
-    val release_date: String,
+    val release_date: String?,
     val title: String
 )

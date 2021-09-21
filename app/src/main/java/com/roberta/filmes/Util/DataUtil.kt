@@ -6,12 +6,16 @@ import java.util.*
 
  object DataUtil {
 
-      fun formataData(data: String): String {
+      fun formataData(data: String?): String {
 
-         val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-         val mDate = formatter.parse(data)
+          data?.takeIf { it.isNotEmpty() && it.isNotBlank() }?.let {
+                  val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                  val mDate = formatter.parse(it)
 
-         val formatado = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-         return formatado.format(mDate)
+                  val formatado = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                  return formatado.format(mDate)
+          }
+
+         return ""
      }
  }
