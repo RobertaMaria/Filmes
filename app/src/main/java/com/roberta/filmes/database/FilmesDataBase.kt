@@ -12,7 +12,7 @@ import com.roberta.filmes.model.RetornoDetalhesFilme
 
 private const val NOME_BANCO_DE_DADOS = "news.db"
 
-@Database(entities = [Filmes::class, RetornoDetalhesFilme::class], version = 1, exportSchema = false)
+@Database(entities = [RetornoDetalhesFilme::class], version = 1, exportSchema = false)
 @TypeConverters(ConverterListGenero::class)
 abstract class FilmesDataBase : RoomDatabase() {
 
