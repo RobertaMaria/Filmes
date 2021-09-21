@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 @Entity
 class RetornoDetalhesFilme(val genres: List<Genero>,
                            @PrimaryKey
-                           val id: Int,
+                           val id: Long,
                            val original_language: String,
                            val overview: String,
-                           val poster_path: String,
+                           val poster_path: String?,
                            val release_date: String,
                            val title: String )

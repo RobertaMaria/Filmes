@@ -100,7 +100,7 @@ class DetalhesFilmeFragment() : Fragment() {
         campoDataLancamento.text = DataUtil.formataData(dataLancamento)
     }
 
-    private fun mostraImagem(imagem: String) {
+    private fun mostraImagem(imagem: String?) {
         Glide.with(campoImagem)
             .load(
                 campoImagem.context.resources.getString(
