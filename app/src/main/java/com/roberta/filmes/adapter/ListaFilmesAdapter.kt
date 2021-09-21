@@ -52,7 +52,7 @@ class ListaFilmesAdapter() :
         private fun mostraImagem(imagem: String) {
             Glide.with(campoImagem)
                 .load(campoImagem.context.resources.getString(R.string.url_imagem, imagem))
-                .placeholder(R.mipmap.erro)
+                .placeholder(R.mipmap.carregando)
                 .error(R.mipmap.falha)
                 .into(campoImagem)
         }
