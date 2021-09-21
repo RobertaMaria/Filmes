@@ -107,7 +107,7 @@ class DetalhesFilmeFragment() : Fragment() {
                     R.string.url_imagem,
                     imagem
                 )
-            ).placeholder(R.mipmap.erro)
+            ).placeholder(R.mipmap.carregando)
             .error(R.mipmap.falha)
             .into(campoImagem)
     }
