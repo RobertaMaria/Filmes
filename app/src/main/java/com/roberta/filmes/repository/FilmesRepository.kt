@@ -9,9 +9,9 @@ interface FilmesRepository {
 
     fun buscaFilmesApi() : Flow<PagingData<Filmes>>
 
-    fun buscaDetalhes(quandoSucesso: (RetornoDetalhesFilme)-> Unit, quandoFalha: (String)->Unit, id: Int)
+    fun buscaDetalhes(quandoSucesso: (RetornoDetalhesFilme)-> Unit, quandoFalha: (String)->Unit, id: Long)
 
-    fun buscaDetalhesInterno(filmeId: Int): RetornoDetalhesFilme?
+    fun buscaDetalhesInterno(filmeId: Long): RetornoDetalhesFilme?
 
     fun salvaDetalhesInterno(detalhesFilme: RetornoDetalhesFilme)
 }

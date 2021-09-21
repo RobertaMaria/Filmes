@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class DetalhesFilmesViewModel(private val repository: FilmesRepository,
-                              private val filmeId: Int) : ViewModel() {
+                              private val filmeId: Long) : ViewModel() {
 
     fun buscaDetalhesFilmeInterno(): LiveData<RetornoDetalhesFilme> {
         val mutableLiveData = MutableLiveData<RetornoDetalhesFilme>()

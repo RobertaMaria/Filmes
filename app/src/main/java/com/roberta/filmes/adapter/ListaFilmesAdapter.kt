@@ -16,7 +16,7 @@ import com.roberta.filmes.model.Filmes
 class ListaFilmesAdapter() :
     PagingDataAdapter<Filmes, ListaFilmesAdapter.ListaFilmesViewHolder>(FILM_COMPARATOR) {
 
-    var onItemClickListener: (id: Int) -> Unit = {}
+    var onItemClickListener: (id: Long) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaFilmesViewHolder {
         val viewCriada =
@@ -30,7 +30,7 @@ class ListaFilmesAdapter() :
 
     inner class ListaFilmesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private var idFilme = 0
+        private var idFilme = 0L
         private val campoImagem by lazy { itemView.findViewById<ImageView>(R.id.item_filme_imagem) }
         private val campoDataLancamento by lazy { itemView.findViewById<TextView>(R.id.item_filme_data) }
         private val campoTituo by lazy { itemView.findViewById<TextView>(R.id.item_filme_nome) }

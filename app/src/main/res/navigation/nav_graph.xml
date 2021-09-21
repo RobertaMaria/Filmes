@@ -26,6 +26,6 @@
         tools:layout="@layout/detalhes_filme">
         <argument
             android:name="filmeId"
-            app:argType="integer" />
+            app:argType="long" />
     </fragment>
 </navigation>

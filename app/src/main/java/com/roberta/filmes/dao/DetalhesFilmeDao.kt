@@ -10,7 +10,7 @@ import com.roberta.filmes.model.RetornoDetalhesFilme
 interface DetalhesFilmeDao {
 
     @Query("SELECT * FROM RetornoDetalhesFilme WHERE id = :filmeId")
-    fun buscaDetalhesInterno(filmeId: Int): RetornoDetalhesFilme?
+    fun buscaDetalhesInterno(filmeId: Long): RetornoDetalhesFilme?
 
     @Insert
     fun salvaDetalhesInterno(detalhesFilme: RetornoDetalhesFilme)

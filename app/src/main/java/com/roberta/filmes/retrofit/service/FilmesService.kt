@@ -16,6 +16,6 @@ interface FilmesService {
     ): RetornoFilmesApi
 
     @GET("movie/{id}")
-    fun buscaDetalhesFilmesApi(@Path("id") id: Int,
+    fun buscaDetalhesFilmesApi(@Path("id") id: Long,
                                @Query("api_key") api_key: String): Call<RetornoDetalhesFilme>
 }

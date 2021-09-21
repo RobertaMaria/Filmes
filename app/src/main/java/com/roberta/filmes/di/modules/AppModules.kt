@@ -40,7 +40,7 @@ val appModules = module {
     viewModel<ListaFilmesViewModel> {
         ListaFilmesViewModel(repository = get())
     }
-    viewModel<DetalhesFilmesViewModel> {(id : Int)->
+    viewModel<DetalhesFilmesViewModel> {(id : Long)->
         DetalhesFilmesViewModel(repository = get(), filmeId = id)
     }
 

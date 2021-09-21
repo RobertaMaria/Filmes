@@ -89,7 +89,7 @@ class ListaFilmesFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
-    private fun vaiParaDetalhesFilme(id: Int) {
+    private fun vaiParaDetalhesFilme(id: Long) {
         val direcao = ListaFilmesFragmentDirections.acaoListaFilmesParaDetalhesFilmes(id)
         controlador.navigate(direcao)
     }

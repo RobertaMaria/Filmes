@@ -34,7 +34,7 @@ class FilmesRepositoryImp(
     override fun buscaDetalhes(
         quandoSucesso: (RetornoDetalhesFilme) -> Unit,
         quandoFalha: (String) -> Unit,
-        id: Int
+        id: Long
     ) {
         val call = service.buscaDetalhesFilmesApi(id, chaveApi)
         call.enqueue(object : Callback<RetornoDetalhesFilme> {
@@ -59,7 +59,7 @@ class FilmesRepositoryImp(
         })
     }
 
-    override fun buscaDetalhesInterno(filmeId: Int): RetornoDetalhesFilme? {
+    override fun buscaDetalhesInterno(filmeId: Long): RetornoDetalhesFilme? {
         return detalhesFilmeDao.buscaDetalhesInterno(filmeId)
     }
 
