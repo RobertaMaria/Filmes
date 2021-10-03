@@ -14,7 +14,7 @@ import java.util.*
 
                   val formatado = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                   return formatado.format(mDate)
-          }
+            }
 
          return ""
      }
